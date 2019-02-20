@@ -1,0 +1,116 @@
+---
+title: "Score_cbq"
+author: "Fran Querdasi & Jill Segarra"
+date: "2/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#parameters
+library(dplyr)
+cbq <- read.csv("~/Desktop/cbq_mod/cbq_20190208.csv", header = T)
+str(cbq)
+
+glimpse(cbq)
+```
+
+```{r}
+#recode items that are reverse scored
+cbq$cbq_18r = recode(cbq$cbq_18, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_50r = recode(cbq$cbq_50, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_93r = recode(cbq$cbq_93, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_61r = recode(cbq$cbq_61, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_90r = recode(cbq$cbq_90, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_92r = recode(cbq$cbq_92, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_16r = recode(cbq$cbq_16, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_21r = recode(cbq$cbq_21, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_84r = recode(cbq$cbq_84, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_3r = recode(cbq$cbq_3, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_49r = recode(cbq$cbq_49, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_91r = recode(cbq$cbq_91, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_25r = recode(cbq$cbq_25, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_34r = recode(cbq$cbq_34, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_75r = recode(cbq$cbq_75, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_35r = recode(cbq$cbq_35, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_68r = recode(cbq$cbq_68, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_78r = recode(cbq$cbq_78, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_36r = recode(cbq$cbq_36, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_43r = recode(cbq$cbq_43, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_82r = recode(cbq$cbq_82, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_53r = recode(cbq$cbq_53, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_83r = recode(cbq$cbq_83, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_54r = recode(cbq$cbq_54, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_56r = recode(cbq$cbq_56, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_74r = recode(cbq$cbq_74, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_11r = recode(cbq$cbq_11, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_60r = recode(cbq$cbq_60, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_19r = recode(cbq$cbq_19, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_48r = recode(cbq$cbq_48, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+cbq$cbq_80r = recode(cbq$cbq_80, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+```
+
+```{r}
+##attempt to use for loop to recode, not finished
+items_recode <- c(18, 50, 93, 61, 90, 92, 16, 21, 84, 3, 49, 91, 25, 34, 75, 35, 68, 78, 36, 43, 82, 53, 83, 54, 56, 74, 11, 60, 19, 48, 80)
+
+for (item in items_recode) {
+  
+  cbq$cbq_r = recode(cbq$cbq_18, "7"=1, "6"=2, "5"=3, "4" = 4, "3"=5, "2"=6, "1"=7)
+
+}
+```
+```{r}
+##replace -888 values with NA
+cbq[cbq=="-888"]<-NA
+    
+```
+
+```{r}
+##create subscale scores
+cbq$cbq_activity <-rowMeans(subset(cbq, select = c(cbq_1, cbq_12, cbq_18r, cbq_22, cbq_50r, cbq_85, cbq_93r)), na.rm = T)
+cbq$cbq_anger <-rowMeans(subset(cbq, select = c(cbq_2, cbq_14, cbq_30, cbq_40, cbq_61r, cbq_87)), na.rm = T)
+cbq$cbq_approach <-rowMeans(subset(cbq, select = c(cbq_6, cbq_15, cbq_46, cbq_58, cbq_90r, cbq_92r)), na.rm = T)
+cbq$cbq_attention <-rowMeans(subset(cbq, select = c(cbq_16r, cbq_21r, cbq_62, cbq_71, cbq_84r, cbq_89)), na.rm = T)
+cbq$cbq_discomfort <-rowMeans(subset(cbq, select = c(cbq_3r, cbq_9, cbq_29, cbq_49r, cbq_64, cbq_91r)), na.rm = T)
+cbq$cbq_sooth <-rowMeans(subset(cbq, select = c(cbq_25r, cbq_34r, cbq_44, cbq_59, cbq_66, cbq_75r)), na.rm = T)
+cbq$cbq_fear <-rowMeans(subset(cbq, select = c(cbq_17, cbq_23, cbq_35r, cbq_41, cbq_63, cbq_68r)), na.rm = T)
+cbq$cbq_highpleasure <-rowMeans(subset(cbq, select = c(cbq_4, cbq_10, cbq_33, cbq_69, cbq_78r, cbq_88)), na.rm = T)
+cbq$cbq_impulse <-rowMeans(subset(cbq, select = c(cbq_7, cbq_28, cbq_36r, cbq_43r, cbq_51, cbq_82r)), na.rm = T)
+cbq$cbq_inhibit <-rowMeans(subset(cbq, select = c(cbq_38, cbq_45, cbq_53r, cbq_67, cbq_73, cbq_81)), na.rm = T)
+cbq$cbq_lowpleasure <-rowMeans(subset(cbq, select = c(cbq_26, cbq_39, cbq_57, cbq_65, cbq_72, cbq_76, cbq_86, cbq_94)), na.rm = T)
+cbq$cbq_sensitivity <-rowMeans(subset(cbq, select = c(cbq_5, cbq_13, cbq_24, cbq_32, cbq_47, cbq_83r)), na.rm = T)
+cbq$cbq_sadness <-rowMeans(subset(cbq, select = c(cbq_8, cbq_20, cbq_27, cbq_31, cbq_54r, cbq_56r, cbq_74r)), na.rm = T)
+cbq$cbq_shyness <-rowMeans(subset(cbq, select = c(cbq_11r, cbq_37, cbq_42, cbq_52, cbq_60r, cbq_70)), na.rm = T)
+cbq$cbq_smile <-rowMeans(subset(cbq, select = c(cbq_19r, cbq_48r, cbq_55, cbq_77, cbq_79, cbq_80r)), na.rm = T)
+```
+```{r}
+#only select participants that have completed CBQ, only get subscale scores
+cbq <-
+  cbq %>% 
+  filter(
+    !is.na(cbq_activity)
+  ) %>% 
+  select(
+    ID = id,
+    cbq_timestamp,
+    cbq_activity,
+    cbq_anger,
+    cbq_approach,
+    cbq_attention,
+    cbq_discomfort,
+    cbq_sooth,
+    cbq_fear,
+    cbq_highpleasure,
+    cbq_impulse,
+    cbq_inhibit,
+    cbq_lowpleasure,
+    cbq_sensitivity,
+    cbq_sadness,
+    cbq_shyness,
+    cbq_smile
+  )
+```
+```{r}
+write.csv(cbq, "~/Desktop/cbq_mod/cbq_scored.csv")
+```
+
