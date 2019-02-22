@@ -13,6 +13,7 @@ output: html_document
 ##child witnessed parent stress - number, age(s)
 ##child direct experience - number, age(s)
 ##child direct experience + witness - number, age(s)
+#for each, sum subjective severity
 ```
 #Read in data
 ```{r}
